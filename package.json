@@ -1,0 +1,18 @@
+{
+  "name": "saarang_todo_app",
+  "version": "1.0.0",
+  "description": "A simple todo app using MEAN stack.",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "abinthomasonline",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.4.17",
+    "morgan": "^1.7.0"
+  }
+}

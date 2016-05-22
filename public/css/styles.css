@@ -1,0 +1,102 @@
+body {
+	background-color: #F1F2F1;
+	text-align: center;
+}
+
+#header {
+	text-align: center;
+	font-size: 52px;
+	font-weight: 300;
+	color: #493741;
+	font-family: Lato,sans-serif;
+	letter-spacing: -.02em;
+	line-height: 1.1;
+}
+
+#todofield {
+	font-size: 30px;
+	font-weight: 100;
+	width: 600px;
+	box-shadow: 0 4px 8px 0 #D3D3D3;
+}
+
+#todofield::placeholder {
+	text-align: center;
+}
+
+#todofield::-webkit-input-placeholder {
+	text-align: center;
+}
+
+#todofield:-moz-placeholder {
+	text-align: center;
+}
+
+#todofield::-moz-placeholder {
+	text-align: center;
+}
+
+#todofield:-ms-input-placeholder {
+	text-align: center;
+}
+
+#todolist {
+	width: 600px;
+	background-color: #FFFFFF;
+	left: 0;
+	right: 0;
+	margin: auto;
+	margin-top: 30px;
+	box-shadow: 0 4px 8px 0 #D3D3D3;
+}
+
+#todolist > div {
+	position: relative;
+	font-size: 30px;
+	color: #767676;
+	font-family: 'Open Sans', sans-serif;
+	text-align: left;
+	font-weight: lighter;
+	vertical-align: middle;
+	border-color: #C2C2C2;
+	border-style: solid;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom-width: 1px;
+	overflow: hidden;
+}
+
+#todolist > div > #todobullets {
+	font-weight: bold;
+	color: #505050;
+	font-size: 40px;
+	margin-left: 5px;
+}
+
+#todolist > div > div {
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+}
+
+#todolist > div > #removebutton {
+	color: #FF6262;
+	cursor: pointer;
+	position: absolute;
+	right: 5px;
+}
+
+#todolist > div > form,
+#todolist > div > form > input {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#todolist > div > form > input {
+	font-size: 30px;
+	color: #767676;
+	font-family: 'Open Sans', sans-serif;
+}
+
+

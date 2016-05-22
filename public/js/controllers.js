@@ -1,10 +1,18 @@
+//-----------controller.js---------------------------------------------
+
 app.controller("todoctrl", function($scope, $http) {	
 
-	var editindex;
-	var editstatus;
-	$scope.editid = undefined;
+	var editindex;				// to store index of todo which is getting edited
+	var editstatus;				// true if some todo is getting edited, false otherwise
+	$scope.editid = undefined;	// id of todo getting edited
 
-	$http.get('/api/todos')
+
+
+
+
+	//--------------- populate todos from db onload---------------------
+
+	$http.get('/api/todos')		
 		.success(function(data) {
 			$scope.todos = data;
 			console.log(data);
@@ -12,6 +20,14 @@ app.controller("todoctrl", function($scope, $http) {
 		.error(function(data) {
 
 		});
+
+	//------------------------------------------------------------------
+
+
+
+
+
+	//--- funtion to add new todo --------------------------------------
 
 	$scope.newtodo = function () {
 		if($scope.newtodotext) {
@@ -27,6 +43,14 @@ app.controller("todoctrl", function($scope, $http) {
 
 	};
 
+	//-----------------------------------------------------------------
+
+
+
+
+
+	//-----funtion to remove todo -------------------------------------
+
 	$scope.removetodo = function(id) {
 		$http.delete('/api/todos/' + id)
 			.success(function(data) {
@@ -37,7 +61,13 @@ app.controller("todoctrl", function($scope, $http) {
 			});
 	};
 
+	//-----------------------------------------------------------------
 
+
+
+
+
+	//--- funtion called when edit starts------------------------------
 
 	$scope.edittodo = function(index, id) {
 		editindex=index;
@@ -45,6 +75,14 @@ app.controller("todoctrl", function($scope, $http) {
 		editstatus=true;
 		$scope.temptodotext = $scope.todos[index].text;
 	};
+
+	//-----------------------------------------------------------------
+
+
+
+
+
+	//------function called upon edit submission-----------------------
 
 	$scope.submitedit = function(index, id) {
 		if($scope.todos[index].text) {
@@ -59,7 +97,9 @@ app.controller("todoctrl", function($scope, $http) {
 
 			$scope.editid = undefined;
 
-		} else {
+		} else { 
+
+			//--------delete todo if blank after edit------------------
 
 			$scope.editid = undefined;
 			$scope.removetodo(id);
@@ -68,11 +108,21 @@ app.controller("todoctrl", function($scope, $http) {
 		editstatus=false;
 	};
 
+	//-----------------------------------------------------------------
+
+
+
+
+
+	//-----callsubmit edit if editstatus is true-----------------------
+
 	$scope.globalclick = function() {
 		if(editstatus) {
 			$scope.submitedit(editindex,$scope.editid);
 		}
 	};
+
+	//-----------------------------------------------------------------
 	
 
 });

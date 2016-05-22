@@ -4,14 +4,19 @@
 		<title>
 			Saarang Todo
 		</title>
+
+		<!-- stylesheets and fonts-->
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+		<!-- angular cdn -->
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
 		</script>
 	</head>
 
 	<body>
+		<!-- angular contollers and modules -->
 		<script>
 			var app=angular.module("todo",[]);
 		</script>
@@ -19,15 +24,19 @@
 		<script src="js/controllers.js">
 		</script>
 
-		<div ng-app="todo" ng-controller="todoctrl" ng-click="globalclick()">
+		<!-- globalclick() to submit edits upon clicking somewhere -->
+		<div ng-app="todo" ng-controller="todoctrl" ng-click="globalclick()"> 
 
 			<h1 id="header">Saarang Todo</h1>
-
+			<!-- newtodo() to add new todo-->
 			<form ng-submit="newtodo()">
 				<input id="todofield" type="text" placeholder="Add todos here" ng-model="newtodotext">
 			</form>
 
 			<div id="todolist">
+
+				<!-- (-) traverse to print all todo
+			         (-) edittodo() launches on double click to edit existing todo-->
 				<div ng-repeat="x in todos" ng-dblclick="edittodo($index, x._id)">
 
 					<div id="todobullets">
@@ -38,10 +47,12 @@
 						{{x.text}}
 					</div>
 
+					<!-- $event.stopPropagation() to stop globalclick() from propagation -->
 					<form ng-show="x._id == editid" ng-submit="submitedit($index, x._id)" ng-click="$event.stopPropagation()">
 						<input type="text" ng-model="x.text">
 					</form>
 
+					<!-- removetodo() to remove todo-->
 					<div id="removebutton" ng-click="removetodo(x._id)">
 						&times;
 					</div>
